@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const dbName = 'azazy';
-const dbPassword = 'veheU09jZmhAVZGf';
-const db = `mongodb+srv://azazy:${dbPassword}@cluster0.4m96e.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const dbPassword = 'RQzkkfvV24YvRltQ';
+
+const db = `mongodb+srv://azazy:${dbPassword}@cluster0.2zqzc.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 const connectDB = async () => {
   try {
