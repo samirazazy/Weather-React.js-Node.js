@@ -5,61 +5,77 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>What's the weather like?</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+  <title>Weather APP</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-offset-4 is-4">
-          <form method="POST">
-            <div class="field has-addons">
-              <div class="control is-expanded">
-                <input class="input" name="city_name" type="text" placeholder="Enter City Name...">
-              </div>
-              <div class="control">
-                <button class="button is-info">
-                  Get Weather!
-                </button>
-              </div>
+  <section>
+    <div class="container ">
+      <div class=" justify-content-center pt-5">
+
+        <form method="POST">
+          <button id="btn" class="btn btn-secondary" name="cityName" value="">
+            Get Current City Weather!
+          </button>
+        </form>
+
+        <form class="form-inline pt-3" method="POST">
+          <div class="input-group mb-3">
+            <input class="form-control" minlength="3" name="cityName" type="text" placeholder="Enter City Name..."
+              required>
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary">
+                Get Weather!
+              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
+
       </div>
     </div>
   </section>
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-offset-4 is-4">
+        <div class=" justify-content-center pt-1"">
           <% for (weather of weatherData) { %>
-          <div class="box">
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-50x50">
-                  <img src="http://openweathermap.org/img/w/<%= weather.icon %>.png" alt="Image">
-                </figure>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <span class="title"><%= weather.city %></span>
-                    <br>
-                    <span class="subtitle"><%= weather.temperature %>° C</span>
-                    <br> <%= weather.description %>
-                  </p>
-                </div>
-              </div>
-            </article>
-          </div>
-          <% } %>
+            <div class=" card text-center mt-4 mb-4 pt-2 pb-2" style="width: 18rem;">
+          <img class="" src="http://openweathermap.org/img/w/<%= weather.icon %>.png" alt="Image" width="50em">
+          <p class="card-title"> <%= weather.city %> </p>
+          <p class="card-text"> <%= weather.temperature %>° C</p>
+          <p class="card-text"> <%= weather.description %> </p>
         </div>
+        <% } %>
       </div>
     </div>
+    </div>
+
   </section>
 
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    $.ajax({
+      url: "https://geolocation-db.com/jsonp",
+      jsonpCallback: "callback",
+      dataType: "jsonp",
+      success: function (location) {
+        document.getElementById("btn").setAttribute("value", location.city);
+      }
+    });
+  </script>
 </body>
 
 </html>

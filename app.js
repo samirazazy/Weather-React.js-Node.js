@@ -55,7 +55,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-  const newCity = new cityModel({ name: req.body.city_name });
+  const newCity = new cityModel({ name: req.body.cityName });
   newCity.save();
 
   res.redirect('/');
