@@ -1,5 +1,10 @@
 # Weather App Task
 
+## Demo link
+
+View demo <a href="https://weather-azazy.herokuapp.com/"><b>Here 💻</b></a> or go to "Installation and Usage" and follow the instructions to install and use.
+
+
 ## Description
 
 Simple web page displays weather based on location of browser And also search for weather conditions in any city or country,
